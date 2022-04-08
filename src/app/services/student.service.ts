@@ -63,7 +63,8 @@ export class StudentService {
     this.students.splice(index, 1);
   }
 
-  getStudentById(id:string): any {
+  // Find the student that will be updated
+  getStudentById(id:string) {
     return this.students.find(item => item.id == id);
   }
 

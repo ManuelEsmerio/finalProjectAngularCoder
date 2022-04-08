@@ -18,8 +18,15 @@ export class ListItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // ? Call to getStudentById function of the student.service to get the student that will be updated
   onStudentUpdate(id:string){
     const student = this.studentService.getStudentById(id);
+    // ? that student that will be updated has to travel for the following components:
+    // * list.component
+    // * student.component
+    // * student-form.component
+
+    // ? And in that component, it has to display into the studentFormGroup but I don't know if it's the most correct process yo do it
     this.updateEvent.emit(student);
   }
 

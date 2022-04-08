@@ -19,13 +19,11 @@ export class StudentComponent implements OnInit {
 
   ngOnInit(): void {
     this.studentService.getStudents().subscribe(student => {
-      console.log("get on init");
       this.students = student;
     });
   }
 
   updateStudentEvent(student: Students){
-    console.log(student);
     this.updateStudent = student;
   }
 
