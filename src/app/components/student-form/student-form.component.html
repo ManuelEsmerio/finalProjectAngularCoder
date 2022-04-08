@@ -1,0 +1,120 @@
+<form class="example-form" [formGroup]="studentFormGroup" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input type="text" matInput formControlName="name" placeholder="John">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="fill">
+          <mat-label>Lastname</mat-label>
+          <input type="text" matInput formControlName="lastname" placeholder="Smith">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="fill">
+          <mat-label>Occupation</mat-label>
+          <input type="text" matInput formControlName="occupation" placeholder="Developer">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="fill">
+          <mat-label>Birthday</mat-label>
+          <input matInput [matDatepicker]="dp3" formControlName="birthday" >
+          <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+          <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+          <!-- <mat-error *ngIf="studentFormGroup.email.hasError('email') && !studentFormGroup.email.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="studentFormGroup.email.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error> -->
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Telephone</mat-label>
+          <span matPrefix>+52 &nbsp;</span>
+          <input type="tel" matInput formControlName="phone" placeholder="555-555-1234">
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <mat-divider></mat-divider>
+      <h2 class="mt-3">Address</h2>
+    </div>
+
+    <div formGroupName="address" class="mt-4">
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="fill">
+            <mat-label>Direction</mat-label>
+            <input type="text" matInput formControlName="direction">
+          </mat-form-field>
+        </div>
+        <div class="col-2">
+          <mat-form-field appearance="fill">
+            <mat-label>Ext</mat-label>
+            <input type="text" matInput formControlName="ext">
+          </mat-form-field>
+        </div>
+        <div class="col-2">
+          <mat-form-field appearance="fill">
+            <mat-label>Int</mat-label>
+            <input type="text" matInput formControlName="int">
+          </mat-form-field>
+        </div>
+        <div class="col-2">
+          <mat-form-field appearance="fill">
+            <mat-label>ZipCode</mat-label>
+            <input matInput #zipcode maxlength="5" placeholder="Ex. 94105">
+            <mat-hint align="end">{{zipcode.value.length}} / 5</mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="fill">
+            <mat-label>Municipality</mat-label>
+            <input type="text" matInput formControlName="municipality">
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="fill">
+            <mat-label>State</mat-label>
+            <input type="text" matInput formControlName="state">
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field appearance="fill">
+            <mat-label>Country</mat-label>
+            <input type="text" matInput formControlName="country">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col" align="end">
+        <button type="button" class="custom-btn" mat-stroked-button color="accent" (click)="onReset()">Reset</button>
+        <button type="submit" class="custom-btn" mat-raised-button color="primary" [disabled]="!studentFormGroup.valid">Save</button>
+      </div>
+    </div>
+  </div>
+</form>

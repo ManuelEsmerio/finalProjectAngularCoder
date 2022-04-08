@@ -1,0 +1,37 @@
+<div class="space-card">
+  <mat-card>
+    <mat-card-title-group>
+      <mat-card-title>{{ student | fullName }}</mat-card-title>
+      <mat-card-subtitle>{{ student.occupation }}</mat-card-subtitle>
+      <img mat-card-sm-image src="https://img.icons8.com/fluency/344/username.png" >
+    </mat-card-title-group>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <p>Email: <em>{{student.email}}</em></p>
+        </div>
+        <div class="col">
+          <p>Phone: <em>{{student.phone}}</em></p>
+        </div>
+        <div class="col">
+          <p>Birthday: <em>{{student.birthday | date:'fullDate'}}</em></p>
+        </div>
+      </div>
+      <address>
+        <p>
+          {{student.address | address}}
+        </p>
+      </address>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-mini-fab color="primary" class="space-button" (click)="onStudentUpdate(student.id)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-mini-fab color="warn" (click)="onStudentDelete(student.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-divider></mat-divider>
+</div>
+

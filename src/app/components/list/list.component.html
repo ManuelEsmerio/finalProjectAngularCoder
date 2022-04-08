@@ -1,0 +1,1 @@
+<app-list-item *ngFor="let student of students; let indice = index" [student]="student" [index]="indice" (updateEvent)="receiveStudentUpdate($event)"></app-list-item>
