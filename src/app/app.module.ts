@@ -56,15 +56,24 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
+import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 
 // Ag grid //
 import { AgGridModule } from 'ag-grid-angular';
+
+// Custom Components
 import { ListComponent } from './components/list/list.component';
 import { ListItemComponent } from './components/list-item/list-item.component';
 import { StudentFormComponent } from './components/student-form/student-form.component';
+
+// Custom pipes
 import { FullNamePipe } from './pipes/full-name.pipe';
 import { AddressPipe } from './pipes/address.pipe';
+
+// Services
 import { StudentService } from './services/student.service';
+import { StudentModalComponent } from './components/student-modal/student-modal.component';
+import { SnackBarComponent } from './components/shared/snack-bar/snack-bar.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +89,9 @@ import { StudentService } from './services/student.service';
     ListItemComponent,
     StudentFormComponent,
     FullNamePipe,
-    AddressPipe
+    AddressPipe,
+    StudentModalComponent,
+    SnackBarComponent
   ],
   imports: [
     BrowserModule,
@@ -125,7 +136,8 @@ import { StudentService } from './services/student.service';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    OverlayModule
+    OverlayModule,
+    NgxMatFileInputModule
   ],
   providers: [
     StudentService

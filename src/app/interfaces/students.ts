@@ -8,5 +8,6 @@ export interface Students {
   occupation: string
   email: string,
   phone: string,
+  image?: string,
   address: Address
 }

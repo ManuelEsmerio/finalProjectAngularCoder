@@ -17,8 +17,6 @@ export class ListComponent implements OnInit {
   }
 
   receiveStudentUpdate(student: Students){
-    console.log("Desde list");
-    console.log(student);
     this.updateEvent.emit(student);
   }
 

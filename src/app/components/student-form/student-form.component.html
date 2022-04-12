@@ -1,4 +1,4 @@
-<form class="example-form" [formGroup]="studentFormGroup" (ngSubmit)="onSubmit()">
+<form class="example-form" [formGroup]="studentFormGroup" (ngSubmit)="onSubmit(formDirective)" #formDirective="ngForm">
   <div class="container">
     <div class="row">
       <div class="col">
@@ -82,7 +82,7 @@
         <div class="col-2">
           <mat-form-field appearance="fill">
             <mat-label>ZipCode</mat-label>
-            <input matInput #zipcode maxlength="5" placeholder="Ex. 94105">
+            <input formControlName="zipcode" matInput #zipcode maxlength="5" placeholder="Ex. 94105">
             <mat-hint align="end">{{zipcode.value.length}} / 5</mat-hint>
           </mat-form-field>
         </div>

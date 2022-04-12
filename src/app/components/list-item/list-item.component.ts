@@ -1,6 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Students } from '../../interfaces/students';
 import { StudentService } from '../../services/student.service';
+import { StudentModalComponent } from '../student-modal/student-modal.component';
+import { SnackBarComponent } from '../shared/snack-bar/snack-bar.component';
 
 @Component({
   selector: 'app-list-item',
@@ -13,21 +17,32 @@ export class ListItemComponent implements OnInit {
   @Input() student!:Students;
   @Input() index!:number;
 
-  constructor(private studentService:StudentService) { }
+  constructor(private studentService:StudentService,
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
   }
 
-  // ? Call to getStudentById function of the student.service to get the student that will be updated
-  onStudentUpdate(id:string){
-    const student = this.studentService.getStudentById(id);
-    // ? that student that will be updated has to travel for the following components:
-    // * list.component
-    // * student.component
-    // * student-form.component
+  openDialog(student: Students) {
+    const dialogRef = this.dialog.open(StudentModalComponent, {
+      data: student
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.openSnackBar();
+    });
+  }
 
-    // ? And in that component, it has to display into the studentFormGroup but I don't know if it's the most correct process yo do it
-    this.updateEvent.emit(student);
+  openSnackBar() {
+    this._snackBar.openFromComponent(SnackBarComponent, {
+      duration: 2500,
+      horizontalPosition:'start',
+      verticalPosition: 'bottom',
+      data:{
+        message: "Successfully modified student.",
+        icon:"done"
+      }
+    });
   }
 
   onStudentDelete(id:string){
